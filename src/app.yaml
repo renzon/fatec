@@ -5,11 +5,8 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /resposta.*
-  script: resposta.app
-
 - url: .*
-  script: main.app
+  script: zen.gae.convention.app
 
 libraries:
 - name: webapp2
