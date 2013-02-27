@@ -4,6 +4,5 @@ from web import ola
 from zen import router
 
 
-def index(handler):
-    url=router.to_path(ola.index,"Andre","Menegussi")
-    handler.redirect(url)
+def index(write_tmpl):
+    write_tmpl("/templates/home.html")

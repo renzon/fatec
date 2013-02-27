@@ -1,6 +1,7 @@
 import logging
 import traceback
 import webapp2
+from core.web import tmpl
 from zen import router
 from zen.router import PathNotFound
 
@@ -24,12 +25,12 @@ class BaseHandler(webapp2.RequestHandler):
     def make_convetion(self):
         kwargs = dict(_extract_values(self, a) for a in self.request.arguments())
         fcn,params=None,None
-        # def write_template(template_name, values={}):
-        #     document=tmpl.render(template_name, values)
-        #     return self.response.write(document)
+        def write_template(template_name, values={}):
+            document=tmpl.render(template_name, values)
+            return self.response.write(document)
 
         convention_params = {"req": self.request, "resp": self.response,
-                             "handler": self}
+                             "handler": self,"write_tmpl":write_template}
 
 
         try:

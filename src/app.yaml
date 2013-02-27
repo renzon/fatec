@@ -4,10 +4,27 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
-handlers:
-- url: .*
-  script: zen.gae.convention.app
-
 libraries:
 - name: webapp2
   version: "2.5.2"
+
+- name: jinja2
+  version: "2.6"
+
+- name: markupsafe
+  version: "0.15"
+
+- name: setuptools
+  version: "0.6c11"
+
+handlers:
+
+- url: /(.*)static(.*)
+  static_files: web/\1static\2
+  upload: web/.*static.*
+
+- url: .*
+  script: zen.gae.convention.app
+
+
+
