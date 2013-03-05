@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<form action="/formulario/salvar" method="post" >
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        Nome: <input type="text" name="nome" /><br/>
+        Sexo: <select name="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+        <br />
+         Estado Civil:   <input name="civil" value="casado" type="radio" />Casado <input type="radio" name="civil" value="solteiro" />Solteiro
+        <br />
+        Linguagens: <input type="checkbox" name="lg" value="python"  />Python
+        <input type="checkbox" name="lg" value="java" /> Java
+        <input type="checkbox" name="lg" value="c" />C
+    </fieldset>
+    <button>Mostrar</button>
+</form>
+<input type="file">
+
+</body>
+</html>

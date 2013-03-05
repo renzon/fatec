@@ -1,0 +1,10 @@
+span{color: #5f6bff; font-size: 30px; border: solid 2px;}
+
+#header{background-color: #18ffed; padding: 20px 10px 30px 10px; border: dashed 10px; margin: 20px;}
+#header:hover{background-color: #ff1793;}
+
+.border{ border: dotted 3px;}
+
+
+
+/*table thead th.border{ border: solid;}*/
