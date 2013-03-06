@@ -3,29 +3,67 @@
 <head>
     <title>Projeto BDInt da Fatec</title>
 
-    <link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
 
+
+    <script type="text/javascript" src="/static/js/meuscript.js"></script>
 </head>
 <body>
-<div id="header"> <h1>Home Page</h1></div>
-<div id="content"><p>Primeiro Parágrafo.<br />
-    Essa é outra <span >linha vermelha</span> texto depois do <span>Vermelho</span>
-</p>
-<a href="/ola">Index - abrir na mesma página</a></div>
-<a href="/ola/world" target="_blank">World - abrir em outra aba</a></div>
-<img src="/static/img/python_64.png" class="border" ></img>
+<div class="navbar navbar-inverse">
+<div class="navbar-inner">
+    <div class="container">
+        <a href="" class="brand">Postal</a>
+        <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li ><a href="/formulario">Formulário</a></li>
+        </ul>
+    </div>
+ </div>
+</div>
 
-<table >
-    <thead>
-    <tr ><th >Nome</th><th>idade</th></tr>
-    </thead>
-    <tbody>
-    <tr><td>Renzo</td><td>30</td></tr>
-    <tr><td>Lessa</td><td>20</td></tr>
-    <tr><td>Shen</td><td>13</td></tr>
-    </tbody>
+<div id="content" class="container">
+ <div class="row">
+    <div class="span6"><h2><button class="btn">Botão</button>
+        <input type="submit" class="btn btn-primary" />
+        <a href="#" class="btn btn-block btn-danger"><i class="icon-thumbs-up icon-white"></i>Link</a></h2></div>
+     <div class="span6"><a href="#" class="btn btn-success btn-mini"><i class="icon-thumbs-up icon-white"></i></a></div>
+ </div>
 
-</table>
-<div id="footer" class="border">Rodapé</div>
+    <div class="row">
+        <div class="span2"><input id="in" type="text" /><button id="enviar" class="btn-success">Enviar Msg</button></div>
+        <div class="span5"><div id="msg"></div></div>
+        <div class="span4"><h2>4 colunas no meio</h2></div>
+    </div>
+    <div class="row">
+        <div class="span6 offset3">
+            <div class="row">
+                <div class="span3"><h3>e</h3></div>
+                <div class="span3"><h3>d</h3></div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 id="fluido">Layout Fluido</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6"><h3>Fluido a esquerda</h3></div>
+        <div class="span6"><h3>Fluido a direita</h3></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset3">
+            <div class="row-fluid">
+                <div class="span6"><h3>Fluido a esquerda</h3></div>
+                <div class="span6"><h3>Fluido a direita</h3></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div id="footer" class="border">Rodapé
+
+</div>
 </body>
 </html>
