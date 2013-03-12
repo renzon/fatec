@@ -1,23 +1,39 @@
-/**
- * Created with PyCharm.
- * User: renzo
- * Date: 3/5/13
- * Time: 8:56 PM
- * To change this template use File | Settings | File Templates.
- */
+
 
 var init=function init(){
     var $botoes=$(".btn-danger");
     $botoes.click(function(){
         $("#fluido").slideUp()
-    })
-        $(".btn-primary").click(function(){
-            $("#fluido").slideDown()
-        })
+    });
+
+    $("#loader").hide();
+
+    $(".btn-primary").click(function(){
+        $("#fluido").slideDown()
+    });
 
     $("#enviar").click(function(){
-        var texto=$("#in").val()
-        $("#in").val("")
-    })
+        $("#loader").fadeIn();
+        var $inp=$("#in");
+        var texto=$inp.val();
+        var retornoDoServidor=function retornoDoServidor(objJs){
+            $inp.val("");
+            var $msg=$("<h3>"+objJs.data+" - "+objJs.texto+"</ h3>");
+            $msg.hide();
+            $("#msg").prepend($msg);
+            $msg.slideDown();
+            $("#loader").fadeOut();
+        }
+
+
+        $.post("/ajax",{"texto":texto},retornoDoServidor,
+            "json").error(function(){
+                $("#loader").fadeOut();
+                alert("Erro");
+            });
+
+
+    });
 }
-$(document).ready(init)
+
+$(document).ready(init);
