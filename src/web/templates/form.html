@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+
+{% block content %}
+
+    {% include "/templates/footer.html" %}
 <form action="/formulario/salvar" method="post" >
     <fieldset>
         <legend>Dados Pessoais</legend>
@@ -22,6 +22,4 @@
     <button>Mostrar</button>
 </form>
 <input type="file">
-
-</body>
-</html>
+{% endblock %}

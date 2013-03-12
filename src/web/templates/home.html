@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Projeto BDInt da Fatec</title>
-
-    <link type="text/css" rel="stylesheet" href="/static/css/base.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css"/>
-    <script type="text/javascript" src="/static/js/jquery.js"></script>
-
-
-    <script type="text/javascript" src="/static/js/meuscript.js"></script>
-</head>
-<body>
-<div class="navbar navbar-inverse">
-<div class="navbar-inner">
-    <div class="container">
-        <a href="" class="brand">Postal</a>
-        <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li ><a href="/formulario">Formulário</a></li>
-        </ul>
-    </div>
- </div>
-</div>
-
+{% extends "/templates/base.html" %}
+{% block head %}<script type="text/javascript" src="/static/js/meuscript.js"></script>{% endblock %}
+{% block content %}
 <div id="content" class="container">
  <div class="row">
     <div class="span6"><h2><button class="btn">Botão</button>
@@ -63,10 +41,5 @@
         </div>
 
     </div>
-
 </div>
-<div id="footer" class="border">Rodapé
-
-</div>
-</body>
-</html>
+{% endblock %}

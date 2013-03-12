@@ -1,0 +1,26 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("TABLE") }} {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="span6">
+    <h3>Alunos</h3>
+        <ol>
+            {% for aluno in alunos %}
+            <li>{{ aluno }}</li>
+            {% endfor %}
+        </ol>
+
+    </div>
+    <div class="span6">
+        <h3>Professores</h3>
+        <ol>
+            {% for p in professores %}
+                <li>{{p.nome }} - {{ p.idade }} - {{ p.salario|brfloat}}</li>
+            {% endfor %}
+        </ol>
+
+    </div>
+    </div>
+</div>
+{% endblock %}
