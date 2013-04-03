@@ -1,0 +1,27 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% block content %}
+<table>
+    <thead>
+    <tr>
+        <th>Urlsafe</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>DDD</th>
+    </tr>
+    </thead>
+    {% for e in estados %}
+    <tr>
+        <td>{{ e.key.urlsafe() }}</td>
+        <td>{{ e.key.id() }}</td>
+        <td>{{ e.nome }}</td>
+        <td>{{ e.sigla }}</td>
+        <td>{{ e.ddd }}</td>
+        <td><a class="btn btn-primary" href="{{ editar_url }}/{{ e.key.urlsafe() }}" >Editar</a></td>
+        <td><a class="btn btn-danger" href="{{ apagar_url }}/{{ e.key.id() }}">Apagar</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

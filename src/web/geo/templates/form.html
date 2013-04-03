@@ -1,0 +1,19 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% block content %}
+{% set estado=estado or None %}
+<form action="{{ save_url }}" method="post" >
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        Nome: <input type="text" name="nome" value="{{ estado.nome }}" /><br/>
+        Sigla: <input type="text" name="sigla" value="{{ estado.sigla }}" /><br/>
+        <br />
+        DDD:<input type="text" name="ddd" value="{{ estado.ddd }}" />
+        {% if estado %}
+        <input type="hidden" name="id" value="{{ estado.key.id() }}" />
+        {% endif %}
+    </fieldset>
+    <button>Salvar</button>
+</form>
+{% endblock %}
