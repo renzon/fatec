@@ -8,3 +8,8 @@ class Estado(ndb.Model):
     sigla=ndb.StringProperty(required=True)
     ddd=ndb.IntegerProperty(required=True)
 
+
+class Cidade(ndb.Model):
+    nome=ndb.StringProperty(required=True)
+    estado=ndb.KeyProperty(Estado,required=True)
+

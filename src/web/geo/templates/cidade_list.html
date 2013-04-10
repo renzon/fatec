@@ -1,0 +1,21 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("TOWN") }} {% endblock %}
+{% block content %}
+    <a class="btn" href="{{ next_page_url }}">Próxima Página</a>
+<table>
+    <thead>
+    <h3>Cidades do Estado {{ estado.nome }}</h3>
+    <tr>
+        <th>Nome</th>
+        <th>Id</th>
+
+    </tr>
+    </thead>
+    {% for c in cidades %}
+    <tr>
+        <td>{{ c.nome }}</td>
+        <td>{{ c.key.id() }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
