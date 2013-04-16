@@ -30,7 +30,8 @@ class BaseHandler(webapp2.RequestHandler):
             return self.response.write(document)
 
         convention_params = {"req": self.request, "resp": self.response,
-                             "handler": self,"write_tmpl":write_template}
+                             "handler": self,"write_tmpl":write_template,
+                             "tmpl":tmpl}
 
 
         try:

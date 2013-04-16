@@ -20,10 +20,11 @@ def salvar(handler,nome,estado_id):
     cidade.put()
     handler.redirect(router.to_path(listar,estado_id))
 
-def listar(write_tmpl,estado_id):
+def listar(write_tmpl,tmpl,estado_id):
     estado_id=long(estado_id)
     estado=Estado.get_by_id(estado_id)
     values={"estado":estado,
+
             "list_url":router.to_path(listar_ajax,estado_id)}
     write_tmpl("/geo/templates/cidade_list.html",values)
 

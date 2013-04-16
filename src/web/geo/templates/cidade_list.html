@@ -1,19 +1,24 @@
 {% extends "/templates/base.html" %}
 {% block navbar %}{{ create_navbar("TOWN") }} {% endblock %}
 
+
 {% block head %}
     <script type="text/javascript" src="/static/js/mustache.js"></script>
     <script type="text/javascript">
+        var tmpl=null;
+        $.get("/static/html/cidades_mustache.html",function(resultado){
+            tmpl=resultado;
+        });
+
+
         var carregarCidadesConstrutor=function (){
             var listUrl="{{ list_url }}";
             var $conteudo=$("#conteudo");
             return function(){
-
                 $.getJSON(listUrl,function(resposta){
                     listUrl=resposta.nextPageUrl;
-                    var tmpl={% raw %}'{{#cidades}}<tr><td>{{ nome }}</td><td>{{ id }}</td></tr>{{/cidades}}';{% endraw %}
                     var renderizar=Mustache.render(tmpl,resposta);
-                    $conteudo.html(renderizar);
+                    $conteudo.append(renderizar);
                 });
             }
         };
