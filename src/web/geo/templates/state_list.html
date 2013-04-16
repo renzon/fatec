@@ -1,5 +1,28 @@
 {% extends "/templates/base.html" %}
 {% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% block head %}
+    <script type="text/javascript">
+
+        function apagarEstado() {
+            var urlBase="{{ apagar_url }}/";
+            var estadoId=$(this).attr("data-id")
+            var loader=$("img[data-id="+ estadoId +"]")
+            loader.fadeIn();
+            alert(estadoId);
+            function apagarLinha(){
+                $('tr[data-id='+estadoId+']').fadeOut();
+            }
+
+            $.post(urlBase+estadoId,apagarLinha).error(function(){
+               alert("Deu erro ao apagar estado")
+            });
+        }
+        $(document).ready(function(){
+            $(".btn-erase").click(apagarEstado);
+            $(".loader").hide();
+        });
+    </script>
+{% endblock %}
 {% block content %}
 <table>
     <thead>
@@ -12,14 +35,16 @@
     </tr>
     </thead>
     {% for e in estados %}
-    <tr>
+    <tr data-id="{{ e.key.id() }}">
         <td>{{ e.key.urlsafe() }}</td>
         <td>{{ e.key.id() }}</td>
         <td>{{ e.nome }}</td>
         <td>{{ e.sigla }}</td>
         <td>{{ e.ddd }}</td>
         <td><a class="btn btn-primary" href="{{ editar_url }}/{{ e.key.urlsafe() }}" >Editar</a></td>
-        <td><a class="btn btn-danger" href="{{ apagar_url }}/{{ e.key.id() }}">Apagar</a></td>
+        <td><button  class="btn btn-danger btn-erase" data-id="{{ e.key.id() }}">Apagar</button></td>
+        <td><img data-id="{{ e.key.id() }}" class="loader" src="/static/img/blueloader.gif" /></td>
+
     </tr>
     {% endfor %}
 

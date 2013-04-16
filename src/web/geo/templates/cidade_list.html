@@ -1,8 +1,36 @@
 {% extends "/templates/base.html" %}
 {% block navbar %}{{ create_navbar("TOWN") }} {% endblock %}
+
+{% block head %}
+    <script type="text/javascript" src="/static/js/mustache.js"></script>
+    <script type="text/javascript">
+        var carregarCidadesConstrutor=function (){
+            var listUrl="{{ list_url }}";
+            var $conteudo=$("#conteudo");
+            return function(){
+
+                $.getJSON(listUrl,function(resposta){
+                    listUrl=resposta.nextPageUrl;
+                    var tmpl={% raw %}'{{#cidades}}<tr><td>{{ nome }}</td><td>{{ id }}</td></tr>{{/cidades}}';{% endraw %}
+                    var renderizar=Mustache.render(tmpl,resposta);
+                    $conteudo.html(renderizar);
+                });
+            }
+        };
+
+
+        $(document).ready(function(){
+            var carregarCidades=carregarCidadesConstrutor();
+             carregarCidades();
+            $("#next-page").click(carregarCidades);
+
+        });
+
+    </script>
+{% endblock %}
 {% block content %}
-    <a class="btn" href="{{ next_page_url }}">Próxima Página</a>
-<table>
+    <button id="next-page" class="btn" >Próxima Página</button>
+<table id="conteudo">
     <thead>
     <h3>Cidades do Estado {{ estado.nome }}</h3>
     <tr>
@@ -11,11 +39,6 @@
 
     </tr>
     </thead>
-    {% for c in cidades %}
-    <tr>
-        <td>{{ c.nome }}</td>
-        <td>{{ c.key.id() }}</td>
-    </tr>
-    {% endfor %}
+
 </table>
 {% endblock %}

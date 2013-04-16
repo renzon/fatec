@@ -32,7 +32,6 @@ def listar(write_tmpl):
 def apagar(handler,id):
     key=ndb.Key(Estado,long(id))
     key.delete()
-    handler.redirect(router.to_path(listar))
 
 def editar(write_tmpl,urlsafe):
     key=ndb.Key(urlsafe=urlsafe)
