@@ -6,7 +6,7 @@ from google.appengine.ext import ndb
 class Estado(ndb.Model):
     nome=ndb.StringProperty(required=True)
     sigla=ndb.StringProperty(required=True)
-    ddd=ndb.IntegerProperty(required=True)
+    ddd=ndb.IntegerProperty()
 
 
 class Cidade(ndb.Model):
