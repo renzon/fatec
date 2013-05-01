@@ -1,0 +1,14 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+
+{% block content %}
+
+<form action="{{ url_salvar }}" method="post" >
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        Nome: <input type="text" name="nome" /><br/>
+        Email: <input type="email" name="email" value="{{ email }}" /><br/>
+    </fieldset>
+    <button>Salvar</button>
+</form>
+{% endblock %}

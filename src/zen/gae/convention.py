@@ -1,9 +1,13 @@
 import logging
 import traceback
+from google.appengine.api import users
 import webapp2
+from core.usuario.model import Usuario
 from core.web import tmpl
+from web import usuario
 from zen import router
 from zen.router import PathNotFound
+
 
 def _extract_values(handler, param, default_value=""):
     values = handler.request.get_all(param)
@@ -24,15 +28,23 @@ class BaseHandler(webapp2.RequestHandler):
 
     def make_convetion(self):
         kwargs = dict(_extract_values(self, a) for a in self.request.arguments())
-        fcn,params=None,None
+        fcn, params = None, None
+
         def write_template(template_name, values={}):
-            document=tmpl.render(template_name, values)
+            user = Usuario.current_user()
+            if user:
+                values["current_user"]=user
+                values["logout_url"]=users.create_logout_url("/")
+            else:
+                cadastro_url=router.to_path(usuario.form)
+                values["login_url"]=users.create_login_url(cadastro_url)
+
+            document = tmpl.render(template_name, values)
             return self.response.write(document)
 
         convention_params = {"req": self.request, "resp": self.response,
-                             "handler": self,"write_tmpl":write_template,
-                             "tmpl":tmpl}
-
+                             "handler": self, "write_tmpl": write_template,
+                             "tmpl": tmpl}
 
         try:
             fcn, params = router.to_handler(self.request.path, convention_params, **kwargs)

@@ -10,20 +10,30 @@
 </head>
 <body>
 {% macro create_navbar(selected_tab="HOME") %}
-<div class="navbar navbar-inverse">
-<div class="navbar-inner">
-    <div class="container">
-        <a href="" class="brand">Postal</a>
-        <ul class="nav">
-            <li {% if selected_tab=="HOME" %}class="active" {% endif %}><a href="/">Home</a></li>
-            <li {% if selected_tab=="FORM" %}class="active" {% endif %} ><a href="/geo/estado/form">Formulário</a></li>
-            <li {% if selected_tab=="TONW" %}class="active" {% endif %} ><a href="/geo/cidade/form">Formulário de Cidade</a></li>
-            <li {% if selected_tab=="TABLE" %}class="active" {% endif %} ><a href="/tabela">Tabela</a></li>
-        </ul>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="" class="brand">Postal</a>
+                <ul class="nav">
+                    <li {% if selected_tab=="HOME" %}class="active" {% endif %}><a href="/">Home</a></li>
+                    <li {% if selected_tab=="FORM" %}class="active" {% endif %}><a
+                            href="/geo/estado/form">Formulário</a></li>
+                    <li {% if selected_tab=="TONW" %}class="active" {% endif %}><a href="/geo/cidade/form">Formulário de
+                        Cidade</a></li>
+                    <li {% if selected_tab=="TABLE" %}class="active" {% endif %}><a href="/tabela">Tabela</a></li>
+                </ul>
+        <span class="pull-right" style="border: none;">
+        {% if current_user %}
+            {{  current_user.nome}}
+            <a class="btn btn-danger" href="{{  logout_url}}">Logout</a>
+        {% else %}
+            <a class="btn btn-primary" href="{{  login_url}}">Login</a>
+        {% endif %}
+        </span>
+            </div>
+        </div>
     </div>
- </div>
-</div>
-{%  endmacro %}
+{% endmacro %}
 {% block navbar %}{{ create_navbar() }} {% endblock %}
 {% block content %}{% endblock %}
 

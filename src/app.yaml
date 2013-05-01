@@ -23,6 +23,11 @@ handlers:
   static_files: web/\1static\2
   upload: web/.*static.*
 
+
+- url: /logado.*
+  login: admin
+  script: zen.gae.convention.app
+
 - url: .*
   script: zen.gae.convention.app
 
