@@ -2,9 +2,10 @@
 from __future__ import absolute_import, unicode_literals
 from google.appengine.ext import ndb
 from core.geo.model import Estado
+from core.usuario import seg
 from zen import router
 
-
+@seg.usuario_logado
 def form(write_tmpl):
     values={"save_url":router.to_path(salvar)}
     write_tmpl("/geo/templates/form.html",values)
