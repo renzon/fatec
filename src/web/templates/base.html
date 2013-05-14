@@ -21,10 +21,11 @@
                     <li {% if selected_tab=="TONW" %}class="active" {% endif %}><a href="/geo/cidade/form">Formulário de
                         Cidade</a></li>
                     <li {% if selected_tab=="TABLE" %}class="active" {% endif %}><a href="/tabela">Tabela</a></li>
+                     <li {% if selected_tab=="UP" %}class="active" {% endif %}><a href="/up">Upload</a></li>
                 </ul>
         <span class="pull-right" style="border: none;">
         {% if current_user %}
-            {{  current_user.nome}}
+            <a href="/down"><img src="{{  current_user.avatar_img(30)}}" /></a>{{  current_user.nome}}
             <a class="btn btn-danger" href="{{  logout_url}}">Logout</a>
         {% else %}
             <a class="btn btn-primary" href="{{  login_url}}">Login</a>

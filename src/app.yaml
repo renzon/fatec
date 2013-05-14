@@ -28,6 +28,13 @@ handlers:
   login: admin
   script: zen.gae.convention.app
 
+- url: /upfile
+  script: web.upfile.app
+
+- url: /down
+  script: web.down.app
+
+
 - url: .*
   script: zen.gae.convention.app
 
